@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="plantilla/template :: head">
+</head>
+
+<body>
+<header th:replace="plantilla/template :: header"></header>
+	<br>
+	<br>
+	<center> 
+	<p style="color: red; font-size:35px; ">Mantenimiento cliente</p>
+	</center>
+	<div class="container mt-4">
+
+		<table class="table">
+
+			<thead>
+
+				<tr>
+
+					<td><a th:href="@{/menu}" class="btn btn-danger">MENU</a></td>
+					<td><a th:href="@{/listacliente}" class="btn btn-danger">LISTA</a></td>
+					<td><a th:href="@{/nuevapersona}" class="btn btn-danger">AGREGAR CLIENTE</a></td>
+
+				</tr>
+
+			</thead>
+
+
+		</table>
+
+	</div>
+<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+
+</html>

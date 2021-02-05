@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+	<div class="container mt-3">
+		<div class="col-sm-6">
+			<form th:action="@{/savecliente}" th:object=${cliente} method="POST">
+				<div class="card">
+					<div class="card-header">
+						<h3>Modulo Cliente</h3>
+					</div>
+					<div class="card-body">
+						<!-- --->
+						 <label>NOMBRES</label> 
+						 <input	th:field="*{nombre}" type="text" class="form-control"> 
+						 <label>APELLIDOS</label> 
+						 <input	th:field="*{apellido}" type="text" class="form-control"> 
+						 <label>TELEFONO</label> 
+						 <input	th:field="*{telefono}" type="number" class="form-control"> 
+						 <label>DIRECCION</label> 
+						 <input	th:field="*{direccion}" type="text" class="form-control"> 
+						 <label>DNI</label>
+						<input th:field="*{dni}" type="number" class="form-control">
+					</div>
+				</div>
+				<div class="card-footer"></div>
+				<input type="submit" value="Guardar" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
