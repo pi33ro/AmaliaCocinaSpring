@@ -18,5 +18,6 @@ public class ControladorMenu {
 	public String vistaPersona() {
 		return "vistapersona";
 	}
+	
 
 }
