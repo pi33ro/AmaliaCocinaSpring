@@ -1,14 +1,22 @@
 package com.empresa.demo.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name="plato")
-public class Plato {
+public class Plato implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	private String id_plato;
 	@Column(name="nombre")
@@ -21,15 +29,17 @@ public class Plato {
 	private int stock;
 	@Column(name="imagen")
 	private String imagen;
-	@Column(name="id_categoria")
-	private String categoria;
+	
+	@ManyToOne
+	@JoinColumn(name="id_categoria")
+	private Categoria categoria;
 	
 	public Plato() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public Plato(String id_plato, String nombre, double precio, String descripcion, int stock, String imagen,
-			String categoria) {
+			Categoria categoria) {
 		super();
 		this.id_plato = id_plato;
 		this.nombre = nombre;
@@ -88,13 +98,15 @@ public class Plato {
 		this.imagen = imagen;
 	}
 
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
 
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
+
+
 	
 
 }

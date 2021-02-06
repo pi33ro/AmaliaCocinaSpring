@@ -36,7 +36,7 @@ public class PlatoServices implements IPlatoService {
 
 	@Override
 	public void saveProcedure(Plato c) {
-		data.saveProcedure(c.getCategoria(), c.getNombre(), c.getPrecio(), c.getDescripcion(), c.getStock(), c.getImagen());
+		data.saveProcedure(c.getCategoria(), c.getNombre(),c.getPrecio(), c.getDescripcion(), c.getStock(), c.getImagen());
 		
 	}
 
