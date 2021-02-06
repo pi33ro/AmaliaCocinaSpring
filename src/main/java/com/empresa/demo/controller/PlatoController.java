@@ -93,7 +93,8 @@ public class PlatoController {
 		service.eliminar(id);
 		return "redirect:/listaplato";
 	}
-
+	
+	
 
 
 }
