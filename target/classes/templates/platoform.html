@@ -16,19 +16,30 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<div class="card-body">
 						<!-- --->
 						<label>ID</label>
-						 <input th:field="*{id_producto}" type="number" class="form-control"> 
+						 <input th:field="*{id_plato}" type="number" class="form-control"> 
+						 
 						 <label>NOMBRE</label> 
 						 <input	th:field="*{nombre}" type="text" class="form-control"> 
+						 
 						 <label>PRECIO</label> 
 						 <input	th:field="*{precio}" type="number" class="form-control"> 
+						 
 						 <label>DESCRIPCION</label> 
 						 <input	th:field="*{descripcion}" type="text" class="form-control"> 
+						 
 						 <label>STOCK</label> 
 						 <input	th:field="*{stock}" type="number" class="form-control"> 
-						 <label>CATEGORIA</label> 
-						 <input	th:field="*{stock}" type="number" class="form-control">
+						 
 						 <label class="col-md-2" for="imagen">IMAGEN</label>
 						<input type="file" name="file" class="form-control form-control-sm col-md-6" id="imagen">
+						
+						<label>CATEGORIA</label> 
+						 <select th:field="*{categoria}" class="form-control" id="categoria">
+							 <option th:each="categoria:${categorias}"
+							 			th:value="${categoria.id_categoria}"
+							 			th:text="${categoria.nombre}"
+							 />
+						 </select>
 					</div>
 				</div>
 				<div class="card-footer"></div>

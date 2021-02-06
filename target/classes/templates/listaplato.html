@@ -37,11 +37,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 					<td th:text="${p.precio}"></td>
 					<td th:text="${p.descripcion}"></td>
 					<td th:text="${p.stock}"></td>
-					<td th:text="${p.id_categoria}"></td>
 					<td scope="row"><img class="img-thumbnail rounded float-left"
-										th:src="@{'image/' + ${p.imagen}}" 
+										th:src="*{'image/productos/' + {p.imagen}}" 
 										th:alt="${p.imagen}"
-										style="max-width:25%;"></td>
+										style="max-width:100%;"></td>
+					<td th:text="${p.categoria}"></td>  					
 
 					<td>
 						<a th:href="@{/editarplato/}+${p.id_plato}" class="btn btn-warning">Editar</a>
