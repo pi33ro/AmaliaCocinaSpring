@@ -23,4 +23,5 @@ public interface IPlato extends JpaRepository<Plato, String>{
 			@Param("stockIn")int stockIn,
 			@Param("imagenIn")String imagenIn
 			);
+	
 }
