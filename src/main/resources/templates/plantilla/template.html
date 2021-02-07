@@ -4,6 +4,7 @@
 <head th:fragment="head">
 <meta charset="UTF-8">
 <title>CRUD</title>
+<link rel="stylesheet" th:href="@{/css/all.css}">
 <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
 <link rel="stylesheet" th:href="@{/css/signin.css}">
 <link rel="stylesheet" type="text/css" href="static/css/fondo.css"
@@ -39,6 +40,10 @@
 							class="nav-link" th:href="@{/listaplato}">PLATOS</a></li>
 						<li class="nav-item"><a class="nav-link"
 							th:href="@{/platospedidos}">Realiza Pedido</a></li>
+						<li class="nav-item">
+							<a class="nav-link" >
+							<i class="fas fa-cart-plus">(<label style="color:gray;" th:text="${contador}"></label>)</i>Carrito</a>
+						</li>
 					</ul>
 
 					<ul class="navbar-nav nav-bar-right">

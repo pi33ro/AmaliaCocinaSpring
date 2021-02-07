@@ -105,7 +105,7 @@ public class Plato implements Serializable {
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
-
+	
 
 	
 
