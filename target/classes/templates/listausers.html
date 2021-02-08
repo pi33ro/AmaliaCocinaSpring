@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+
+	<div class="container">
+	
+	<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/nuevousers}"
+			th:text="'Nuevo Users'" title="Crear Nuevo Registro">
+		</a>
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">ID TRABAJADOR</th>
+					<th scope="col">USERNAME</th>
+					<th scope="col">PASSWORD</th>
+					<th scope="col">ENABLED</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="p:${users}">
+					<td th:text="${p.id}"></td>
+					<td th:text="${p.trabajador_id}"></td>
+					<td th:text="${p.username}"></td>
+					<td th:text="${p.password}"></td>
+					<td th:text="${p.enabled}"></td>
+
+					<td>
+						<a th:href="@{/editarusers/}+${p.id}" class="btn btn-warning">Editar</a>
+					</td>
+					
+					<td>
+						<a th:href="@{/eliminarusers/}+${p.id}" class="btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+	
+
+</body>
+</html>

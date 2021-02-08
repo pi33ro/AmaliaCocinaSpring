@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+<header th:replace="plantilla/template :: header"></header>
+	<div class="container mt-3">
+		<div class="col-sm-6">
+			<form th:action="@{/guardarusers}" th:object=${users} method="post"
+			 enctype="multipart/form-data">
+				<div class="card">
+					<div class="card-header">
+						<h3>Modulo Plato</h3>
+					</div>
+					<div class="card-body">
+						<!-- --->
+						<label>ID</label>
+						 <input th:field="*{id}" type="number" class="form-control"> 
+						 
+						 <label>ID TRABAJADOR</label> 
+						 <input	th:field="*{trabajador_id}" type="text" class="form-control"> 
+						 
+						 <label>USERNAME</label> 
+						 <input	th:field="*{username}" type="text" class="form-control"> 
+						 
+						 <label>PASSWORD</label> 
+						 <input	th:field="*{password}" type="text" class="form-control"> 
+						 
+						 <label>ENABLED</label> 
+						 <input	th:field="*{enabled}" type="number" class="form-control"> 
+					</div>
+				</div>
+				<div class="card-footer"></div>
+				<input type="submit" value="Guardar" class="btn btn-success">
+			</form>
+		</div>
+	</div>
+</body>
+</html>
