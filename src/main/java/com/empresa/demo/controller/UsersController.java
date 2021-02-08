@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.empresa.demo.model.Roles;
 import com.empresa.demo.model.Users;
+import com.empresa.demo.servicio.RolesServices;
 import com.empresa.demo.servicio.UsersService;
 
 @Controller
@@ -20,6 +22,9 @@ public class UsersController {
 	
 	@Autowired
 	UsersService service;
+	
+	@Autowired
+	RolesServices service2;
 	
 	@GetMapping("/listausers")
 	public String listar(Model model) {
@@ -32,14 +37,17 @@ public class UsersController {
 	@GetMapping("/nuevousers")
 	public String nuevo(Model model) {
 		Users users=new Users();
+		Roles roles=new Roles();
 		model.addAttribute("users",users);
+		model.addAttribute("roles",roles);
 		return "usersform";
 	}
 	
 	
 	@PostMapping("/guardarusers")
-	public String guardar(Users p) {
+	public String guardar(Users p, Roles r) {
 		service.guardar(p);
+		service2.guardar(r);
 		return "listo";
 	}
 	

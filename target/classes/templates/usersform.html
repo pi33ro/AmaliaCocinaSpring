@@ -28,7 +28,23 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 						 <input	th:field="*{password}" type="text" class="form-control"> 
 						 
 						 <label>ENABLED</label> 
-						 <input	th:field="*{enabled}" type="number" class="form-control"> 
+						 <input	th:field="*{enabled}" type="number" class="form-control">
+						 <div th:object="${roles}" >
+								<!-- 
+						      <label>USERNAME</label> 
+							 <input	th:field="*{username}" type="text" class="form-control"> 
+							 --->
+							 <label>USER ID(=ID)</label> 
+							 <input	th:field="*{user_id}" type="number" class="form-control"> 
+							 
+							 <label>ROL</label> 
+							 <select th:field="*{rol}" class="form-control">
+							 <option value="0" selected>Seleccione el Rol</option>
+  <option value="ROLE_USER">ROLE_USER</option>
+  <option value="ROLE_ADMIN">ROLE_ADMIN</option>
+						 	</select>
+						
+						 </div> 
 					</div>
 				</div>
 				<div class="card-footer"></div>
