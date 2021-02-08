@@ -38,6 +38,13 @@
 							class="nav-link" th:href="@{/vista_cliente}">CLIENTES</a></li>
 						<li class="nav-item" sec:authorize="isAuthenticated()"><a
 							class="nav-link" th:href="@{/listaplato}">PLATOS</a></li>
+							
+							<li class="nav-item" sec:authorize="isAuthenticated()"><a
+							class="nav-link" th:href="@{/vista_almacen}">ALMACENES</a></li>
+							
+						<li class="nav-item" sec:authorize="isAuthenticated()"><a
+							class="nav-link" th:href="@{/vista_insumo}">INSUMOS</a></li>
+							
 						<li class="nav-item"><a class="nav-link"
 							th:href="@{/platospedidos}">Realiza Pedido</a></li>
 						<li class="nav-item">

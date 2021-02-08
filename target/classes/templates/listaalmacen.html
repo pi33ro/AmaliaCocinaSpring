@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+
+	<div class="container">
+	
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">CLASE</th>
+					<th scope="col">DESCRIPCION</th>
+					<th scope="col">ID_Trabajador</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="al:${almacen}">
+					<td th:text="${al.id_almacen}"></td>
+					<td th:text="${al.clase}"></td>
+					<td th:text="${al.descripcion}"></td>
+					<td th:text="${al.trabajador.id_trabajador}"></td>
+
+					<td>
+						<a th:href="@{/editartrabajador/}+${al.trabajador.id_trabajador}" class="btn btn-warning">Editar</a>
+					</td>
+					
+					<td>
+						<a th:href="@{/eliminartrabajador/}+${al.trabajador.id_trabajador}" class="btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		
+				
+		
+	</div>
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>

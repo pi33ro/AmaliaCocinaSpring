@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="plantilla/template :: head">
+</head>
+<body>
+	<header th:replace="plantilla/template :: header"></header>
+	
+	<div class="container">		
+		<h1 th:text="${titulo}"></h1>		
+	</div>
+
+	<div class="container">
+	
+	<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/nuevoinsumo}"
+			th:text="'Nuevo Insumo'" title="Crear Nuevo Registro">
+		</a>
+		
+		<table class="table">
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col">ID</th>
+					<th scope="col">NOMBRE</th>
+					<th scope="col">PRECIO</th>
+					<th scope="col">ID_Almacen</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+					<th scope="col" sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="in:${insumos}">
+					<td th:text="${in.id_insumo}"></td>
+					<td th:text="${in.nombre}"></td>
+					<td th:text="${in.precio}"></td>
+					<td th:text="${in.almacen.id_almacen}"></td>
+
+					<td>
+						<a th:href="@{/editaralmacen/}+${in.id_insumo}" class="btn btn-warning">Editar</a>
+					</td>
+					
+					<td>
+						<a th:href="@{/eliminaralmacen/}+${in.id_insumo}" class="btn btn-danger">Eliminar</a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		
+		
+				
+		
+	</div>
+	
+	<footer th:replace="plantilla/template :: footer"></footer>
+</body>
+</html>
