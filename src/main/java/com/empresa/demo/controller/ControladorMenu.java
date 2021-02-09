@@ -20,4 +20,13 @@ public class ControladorMenu {
 	}
 	
 
+	@GetMapping(value="/vista_almacen")
+	public String vistaAlmacen() {
+		return "vistaalmacen";
+	}
+	
+	@GetMapping(value="/vista_insumo")
+	public String vistaInsumo() {
+		return "vistainsumo";
+	}
 }
