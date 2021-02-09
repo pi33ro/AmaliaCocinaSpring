@@ -10,7 +10,7 @@ public class Conexion {
 	Connection con;
 	
 	String url="jdbc:mysql://localhost:3306/bd_amaliacocina";
-	String user="root";
+	String user="";
 	String pass="";
 	public Connection getConnection() {
 		try {
