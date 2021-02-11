@@ -30,7 +30,7 @@ public class PlatoServices implements IPlatoService {
 	@Override
 	public List<Plato> listar() {
 		
-		return data.findAll();
+		return (List<Plato>) data.findAll();
 	}
 
 	@Override

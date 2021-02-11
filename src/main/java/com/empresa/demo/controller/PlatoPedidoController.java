@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.empresa.demo.interfaz.IPlato;
 import com.empresa.demo.model.Carrito;
 import com.empresa.demo.model.Plato;
 import com.empresa.demo.servicio.PlatoServices;
@@ -22,6 +23,14 @@ public class PlatoPedidoController {
 	@Autowired
 	PlatoServices service;
 	
+	@Autowired
+	IPlato platoRepository;
+
+	List<Carrito> listaCarrito=new ArrayList<>();
+	int item = 0;
+	double totalPagar=0.0;
+	int cantidad=1;
+	
 	@GetMapping(value="/platospedidos")
 	public String vistaPlatosPedidos(Model model) {
 		
@@ -31,16 +40,12 @@ public class PlatoPedidoController {
 
 	}
 	
-	List<Carrito> listaCarrito=new ArrayList<>();
-	int item = 0;
-	double totalPagar=0.0;
-	int cantidad=1;
 	
 	@GetMapping(value="/agregarcarrito/{id}")
-	public String agregarCarrito(@PathVariable String id,Model model) {
+	public String agregarCarrito(@PathVariable String id,Model model,Plato pl) {
 		
 		
-		Plato pl=service.listarId(id);
+		pl=service.listarId(id);
 		
 		//
 
@@ -60,6 +65,15 @@ public class PlatoPedidoController {
 		model.addAttribute("contador", listaCarrito.size());
 		return "listaplatospedidos";
 
+	}
+	
+	@GetMapping(value="/listarcarrito")
+	public String carrito(Model model) {
+
+
+		totalPagar=0.0;
+		model.addAttribute("carrito", listaCarrito);
+		return "listacarrito";
 	}
 	
 

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<link rel="stylesheet" th:href="@{/css/all.css}">
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+<link rel="stylesheet" th:href="@{/css/signin.css}">
+
+<head>
+<meta charset="ISO-8859-1">
+<title>Carrito de Compras</title>
+</head>
+<body>
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-lg navbar-warning bg-warning">
+			<div class="container">
+				<a class="navbar-brand" href="#"> <strong> <img
+						src="../image/logo.jpg" width="200" height="100"
+						alt="texto alternativo descriptivo">
+				</strong>
+				</a>
+
+				<button class="navbar-toggler" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<!-- ENLACES DE MENU -->
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/menu}">Home <span class="sr-only">(current)</span>
+						</a></li>
+						<li class="nav-item" sec:authorize="isAuthenticated()"><a
+							class="nav-link" th:href="@{/vista_cliente}">CLIENTES</a></li>
+						<li class="nav-item" sec:authorize="isAuthenticated()"><a
+							class="nav-link" th:href="@{/listaplato}">PLATOS</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/platospedidos}">Realiza Pedido</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/platospedidos}"> <i class="fas fa-cart-plus">(<label
+									style="color: gray;" th:text="${contador}"></label>)
+							</i>Seguir Comprando
+						</a></li>
+					</ul>
+
+					<ul class="navbar-nav nav-bar-right">
+						<li sec:authorize="!isAuthenticated()"><a
+							class="btn btn-outline-dark" th:href="@{/login}">Iniciar
+								Sesion</a></li>
+
+						<li class="dropdown" sec:authorize="isAuthenticated()"><a
+							class="btn btn-outline-dark dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> <span
+								sec:authentication="name"></span>
+						</a>
+
+							<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+								<a class="dropdown-item" href="#">Action</a> <a
+									class="dropdown-item" href="#">Another action</a>
+
+								<form th:action="@{/logout}" method="post">
+									<button class="dropdown-item" type="submit">Cerrar
+										Sesion</button>
+								</form>
+
+							</div></li>
+					</ul>
+
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	<!-- LISTADO -->
+
+	<div class="container mt-4">
+		<div class="row">
+			<div class="col-sm-8">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>ITEM</th>
+							<th>NOMBRES</th>
+							<th>DESCRIPCION</th>
+							<th>PRECIO</th>
+							<th>CANT</th>
+							<th>SUBTOTAL</th>
+							<th>ACCION</th>
+						<tr>
+					</thead>
+					<tbody>
+						<tr th:each="car:${carrito}">
+							<td th:text="${car.item}"></td>
+							<td th:text="${car.getNombres()}"></td>
+							<td th:text="${car.descripcion}"></td>
+							<td th:text="${car.precioCompra}"></td>
+							<td th:text="${car.cantidad}"></td>
+							<td th:text="${car.subTotal}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="col-sm-4">
+				<div class="card-header">
+					<h3>Generar Comprar:</h3>
+				</div>
+				<div class="card-body">
+					<label>Subtotal:</label> <input type="text" readonly=""
+						class="form-control"> <label>Descuento:</label> <input
+						type="text" readonly="" class="form-control"> <label>Total
+						Pagar:</label> <input type="text" readonly="" class="form-control">
+				</div>
+				<div class="card-footer">
+					<a class="btn btn-info btn-block">Realizar Pago</a> <a
+						class="btn btn-danger btn-block">Generar Comprar</a> <a></a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
