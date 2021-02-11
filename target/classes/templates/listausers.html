@@ -15,8 +15,9 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 	<a class="btn btn-primary btn-sm" sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/nuevousers}"
 			th:text="'Nuevo Users'" title="Crear Nuevo Registro">
 		</a>
-		
-		<table class="table">
+		<div class="pricing-header mx-auto">
+		<div class="table-responsive">
+		<table style="background-color:white;" class="table table-bordered table-responsive-sm table-responsive-md table-responsive-lg">
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col">ID</th>
@@ -46,9 +47,11 @@ xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 				</tr>
 			</tbody>
 		</table>
+		</div>
+		</div>
 		
 	</div>
 	
-
+<footer th:replace="plantilla/template :: footer"></footer>
 </body>
 </html>

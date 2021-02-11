@@ -1,6 +1,12 @@
 body{
     background: url(../image/background.jpg) no-repeat center center fixed;
     background-size: cover;
+
+}
+
+.footer{
+  height: 20vh;
+  background-color: #f57e10;
 }
 
 .main-section{
